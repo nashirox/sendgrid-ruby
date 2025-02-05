@@ -1,6 +1,5 @@
 require 'json'
 require 'smtpapi'
-require 'mimemagic'
 
 module SendGrid
   class Mail
@@ -91,7 +90,8 @@ module SendGrid
     end
 
     def add_attachment(path, name = nil)
-      mime_type = MimeMagic.by_path(path)
+      # mimemagicの依存を外すため、固定値に変更
+      mime_type = 'application/octet-stream'
       file = Faraday::UploadIO.new(path, mime_type)
       name ||= File.basename(file)
       attachments << {file: file, name: name}
@@ -110,7 +110,8 @@ module SendGrid
     end
 
     def add_content(path, cid)
-      mime_type = MimeMagic.by_path(path)
+      # mimemagicの依存を外すため、固定値に変更
+      mime_type = 'application/octet-stream'
       file = Faraday::UploadIO.new(path, mime_type)
       name ||= File.basename(file)
       contents << {file: file, cid: cid, name: name}

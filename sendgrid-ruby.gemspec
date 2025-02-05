@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'smtpapi', '~> 0.1'
   spec.add_dependency 'faraday', '~> 0.9'
-  spec.add_dependency 'mimemagic'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rspec-nc'
